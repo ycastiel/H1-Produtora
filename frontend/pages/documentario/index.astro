@@ -4,20 +4,26 @@ import PublicidadeFinal from '../../views/componentes/documentario/PublicidadeFi
 import '../../recursos/css/pages/documentario/documentario.css';
 import '../../recursos/css/pages/documentario/menu.css';
 
-// Preencher quando a equipe disponibilizar as mídias oficiais.
-// Para vídeos maiores, utilizar a URL de hospedagem externa (ex.: R2 configurado).
+// Arquivos oficiais no R2. O trailer permanece pendente, pois os vídeos recebidos são trechos.
+// Manter os nomes iguais aos objetos publicados em videos/documentario/.
+const baseDosTrechos = 'https://midia.h1produtora.com.br/videos/documentario';
+const urlDoTrecho = (arquivo: string): string =>
+  `${baseDosTrechos}/${encodeURIComponent(arquivo)}`;
+
 const midias: {
   trailer: string | null;
-  poster: string | null;
-  trecho4: string | null;
-  trecho2: string | null;
-  trecho3: string | null;
+  poster: string;
+  trecho1: string;
+  trecho2: string;
+  trecho3: string;
+  trecho4: string;
 } = {
   trailer: null,
-  poster: null,
-  trecho4: null,
-  trecho2: null,
-  trecho3: null,
+  poster: '/imagens/documentario/documentario-poster.webp',
+  trecho1: urlDoTrecho('Trecho 1 - Açogue.mp4'),
+  trecho2: urlDoTrecho('Trecho 2 - Igreja.mp4'),
+  trecho3: urlDoTrecho('Trecho 3 - Relacionamentos.mp4'),
+  trecho4: urlDoTrecho('Trecho 4 - Medo.mp4'),
 };
 
 const depoimentos = [
@@ -115,6 +121,13 @@ const depoimentos = [
           que caminhou pela grande São Paulo apresentando os fatos da modernidade mais
           relevantes à convivência de sua população.
         </p>
+
+        <div class="h1-doc__window h1-doc__clip">
+          <h2 class="h1-doc__bar">▣ Trecho 1 do documentário</h2>
+          <video controls preload="metadata" playsinline src={midias.trecho1} aria-label="Trecho 1 de Fato Capital">
+            Seu navegador não suporta vídeo HTML5.
+          </video>
+        </div>
 
         <div class="h1-doc__window h1-doc__clip">
           <h2 class="h1-doc__bar">▣ Trecho 4 do documentário</h2>
