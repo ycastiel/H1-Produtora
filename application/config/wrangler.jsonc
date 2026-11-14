@@ -1,0 +1,8 @@
+{
+  "name": "h1-produtora",
+  "compatibility_date": "2026-10-20",
+  "assets": {
+    "directory": "../start/dist"
+  },
+  "previews": {}
+}
