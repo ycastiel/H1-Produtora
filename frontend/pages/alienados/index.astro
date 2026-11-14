@@ -5,9 +5,9 @@ import '../../recursos/css/pages/alienados/alienados.css';
 import '../../recursos/css/pages/alienados/video.css';
 import '../../recursos/css/pages/alienados/decoracoes.css';
 
-// MP4s oficiais no R2. URL temporária de testes (r2.dev), NÃO usar na produção.
-// Quando o subdomínio de mídia estiver pronto, altere apenas esta constante.
-const baseDosVideos = 'https://pub-90cad55344be4a7ea61b85c6b701136b.r2.dev/h1-midias/alienados';
+// MP4s oficiais hospedados no Cloudflare R2.
+// Domínio personalizado de mídias da H1 Produtora.
+const baseDosVideos = 'https://midia.h1produtora.com.br/videos/alienados';
 const urlDoEpisodio = (numero: number): string =>
   `${baseDosVideos}/${encodeURIComponent(`Alienados - EP${numero}.mp4`)}`;
 
