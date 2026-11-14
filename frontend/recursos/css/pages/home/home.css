@@ -1482,3 +1482,72 @@
 .fb-header__identity h1 span {
   color: #e7bdff;
 }
+
+/* --- Midias oficiais nas producoes e no carrossel da Home --- */
+.fb-post__art--cover {
+  background: #120f22;
+  overflow: hidden;
+}
+
+.fb-post__image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fb-advert__card--media {
+  position: relative;
+  justify-content: flex-end;
+  align-items: stretch;
+  padding: 0;
+  overflow: hidden;
+}
+
+.fb-advert__media {
+  position: absolute;
+  inset: 0;
+}
+
+.fb-advert__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fb-advert__card--media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 6, 24, .14) 0%,
+    rgba(12, 6, 24, .42) 40%,
+    rgba(12, 6, 24, .88) 100%
+  );
+  pointer-events: none;
+}
+
+.fb-advert__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: .3rem;
+  width: 100%;
+  padding: .8rem .7rem;
+  margin-top: auto;
+  text-align: left;
+}
+
+.fb-advert__card--media strong,
+.fb-advert__card--media .fb-advert__overline,
+.fb-advert__card--media .fb-advert__subtitle {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .72);
+}
+
+.fb-advert__card--media .fb-advert__subtitle {
+  color: #f3eaff;
+}
