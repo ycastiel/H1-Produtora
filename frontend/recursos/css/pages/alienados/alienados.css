@@ -536,23 +536,24 @@
     line-height: 1.75;
 }
 
+/* Gatilho camuflado no texto: continua acessível como botão. */
 .h1-alienados__extra-trigger {
     display: inline;
     padding: 0;
     border: 0;
-    border-bottom: 1px dashed currentColor;
     border-radius: 0;
-    font: inherit;
-    line-height: inherit;
-    color: #7b43ae;
+    color: inherit;
     background: transparent;
+    font: inherit;
+    font-style: italic;
+    line-height: inherit;
     text-decoration: none;
+    vertical-align: baseline;
     cursor: pointer;
 }
 
 .h1-alienados__extra-trigger:hover {
-    color: #a33fc2;
-    border-bottom-style: solid;
+    color: #694d80;
 }
 
 .h1-alienados__extra-trigger:focus-visible {
@@ -639,28 +640,4 @@
 .h1-alienados__extra-body audio {
     display: block;
     width: 100%;
-}
-
-.h1-alienados__extra-pendente {
-    padding: 2.4rem 1rem;
-    border: 1px dashed #aa8bc9;
-    border-radius: 6px;
-    text-align: center;
-    background: repeating-linear-gradient(0deg, #eee4f7, #eee4f7 2px, #f7f1fc 2px, #f7f1fc 5px);
-}
-
-.h1-alienados__extra-pendente>span {
-    font-size: 2rem;
-    color: #9f77bd;
-}
-
-.h1-alienados__extra-pendente p {
-    margin: .75rem 0 .35rem;
-    color: #714a8d;
-    font: 800 .83rem var(--font-mono, monospace);
-}
-
-.h1-alienados__extra-pendente small {
-    display: block;
-    line-height: 1.6;
 }
