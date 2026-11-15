@@ -4,21 +4,18 @@ import PublicidadeFinal from '../../views/componentes/documentario/PublicidadeFi
 import '../../recursos/css/pages/documentario/documentario.css';
 import '../../recursos/css/pages/documentario/menu.css';
 
-// Arquivos oficiais no R2. O trailer permanece pendente, pois os vídeos recebidos são trechos.
-// Manter os nomes iguais aos objetos publicados em videos/documentario/.
+// Trechos oficiais no R2; preservar a grafia dos objetos publicados em videos/documentario/.
 const baseDosTrechos = 'https://midia.h1produtora.com.br/videos/documentario';
 const urlDoTrecho = (arquivo: string): string =>
   `${baseDosTrechos}/${encodeURIComponent(arquivo)}`;
 
 const midias: {
-  trailer: string | null;
   poster: string;
   trecho1: string;
   trecho2: string;
   trecho3: string;
   trecho4: string;
 } = {
-  trailer: null,
   poster: '/imagens/documentario/documentario-poster.webp',
   trecho1: urlDoTrecho('Trecho 1 - Açogue.mp4'),
   trecho2: urlDoTrecho('Trecho 2 - Igreja.mp4'),
@@ -78,40 +75,25 @@ const depoimentos = [
       <header class="h1-doc__intro">
         <p class="h1-doc__eyebrow">✦ UMA PRODUÇÃO H1</p>
         <h1>Fato <em>Capital</em></h1>
-        <p>
-          Fato Capital é um filme documentário que retrata os mais diversos comportamentos
-          da sociedade humana. O longa em suas mais de 6 horas de duração demonstra as
-          culturas, crenças, culinárias, ações e motivações que diversificam esse grande
-          grupo e dividem seus indivíduos da massa.
-        </p>
-        <p class="h1-doc__question">Até onde a moralidade e as vontades terráqueas se colidem?</p>
       </header>
 
-      <section class="h1-doc__media-grid" aria-label="Trailer e pôster de Fato Capital">
-        <div class="h1-doc__window">
-          <h2 class="h1-doc__bar">▣ Trailer oficial</h2>
-          {midias.trailer ? (
-            <video controls preload="metadata" playsinline src={midias.trailer} aria-label="Trailer de Fato Capital">
-              Seu navegador não suporta vídeo HTML5.
-            </video>
-          ) : (
-            <div class="h1-doc__placeholder h1-doc__placeholder--video" role="status">
-              <span aria-hidden="true">▶</span>
-              <p>TRAILER EM PREPARAÇÃO</p>
-            </div>
-          )}
+      <section class="h1-doc__media-grid" aria-label="Sinopse e pôster de Fato Capital">
+        <div class="h1-doc__window h1-doc__window--synopsis">
+          <h2 class="h1-doc__bar">✧ Sinopse</h2>
+          <div class="h1-doc__synopsis">
+            <p>
+              Fato Capital é um filme documentário que retrata os mais diversos comportamentos
+              da sociedade humana. O longa em suas mais de 6 horas de duração demonstra as
+              culturas, crenças, culinárias, ações e motivações que diversificam esse grande
+              grupo e dividem seus indivíduos da massa.
+            </p>
+            <p class="h1-doc__question">Até onde a moralidade e as vontades terráqueas se colidem?</p>
+          </div>
         </div>
 
         <div class="h1-doc__window">
           <h2 class="h1-doc__bar">✧ Pôster</h2>
-          {midias.poster ? (
-            <img class="h1-doc__poster" src={midias.poster} alt="Pôster oficial de Fato Capital" loading="lazy" />
-          ) : (
-            <div class="h1-doc__placeholder h1-doc__placeholder--poster" role="status">
-              <span aria-hidden="true">▧</span>
-              <p>PÔSTER EM PREPARAÇÃO</p>
-            </div>
-          )}
+          <img class="h1-doc__poster" src={midias.poster} alt="Pôster oficial de Fato Capital" loading="lazy" />
         </div>
       </section>
 
@@ -123,23 +105,17 @@ const depoimentos = [
         </p>
 
         <div class="h1-doc__window h1-doc__clip">
-          <h2 class="h1-doc__bar">▣ Trecho 1 do documentário</h2>
-          <video controls preload="metadata" playsinline src={midias.trecho1} aria-label="Trecho 1 de Fato Capital">
+          <h2 class="h1-doc__bar">▣ Açougue</h2>
+          <video controls preload="metadata" playsinline src={midias.trecho1} aria-label="Fato Capital — Açougue">
             Seu navegador não suporta vídeo HTML5.
           </video>
         </div>
 
         <div class="h1-doc__window h1-doc__clip">
-          <h2 class="h1-doc__bar">▣ Trecho 4 do documentário</h2>
-          {midias.trecho4 ? (
-            <video controls preload="metadata" playsinline src={midias.trecho4} aria-label="Trecho 4 de Fato Capital">
-              Seu navegador não suporta vídeo HTML5.
-            </video>
-          ) : (
-            <div class="h1-doc__placeholder h1-doc__placeholder--video" role="status">
-              ▶ TRECHO 4 EM PREPARAÇÃO
-            </div>
-          )}
+          <h2 class="h1-doc__bar">▣ Medo</h2>
+          <video controls preload="metadata" playsinline src={midias.trecho4} aria-label="Fato Capital — Medo">
+            Seu navegador não suporta vídeo HTML5.
+          </video>
         </div>
 
         <p>
@@ -148,16 +124,10 @@ const depoimentos = [
         </p>
 
         <div class="h1-doc__window h1-doc__clip">
-          <h2 class="h1-doc__bar">▣ Trecho 2 do documentário</h2>
-          {midias.trecho2 ? (
-            <video controls preload="metadata" playsinline src={midias.trecho2} aria-label="Trecho 2 de Fato Capital">
-              Seu navegador não suporta vídeo HTML5.
-            </video>
-          ) : (
-            <div class="h1-doc__placeholder h1-doc__placeholder--video" role="status">
-              ▶ TRECHO 2 EM PREPARAÇÃO
-            </div>
-          )}
+          <h2 class="h1-doc__bar">▣ Igreja</h2>
+          <video controls preload="metadata" playsinline src={midias.trecho2} aria-label="Fato Capital — Igreja">
+            Seu navegador não suporta vídeo HTML5.
+          </video>
         </div>
 
         <p>
@@ -167,16 +137,10 @@ const depoimentos = [
         </p>
 
         <div class="h1-doc__window h1-doc__clip">
-          <h2 class="h1-doc__bar">▣ Trecho 3 do documentário</h2>
-          {midias.trecho3 ? (
-            <video controls preload="metadata" playsinline src={midias.trecho3} aria-label="Trecho 3 de Fato Capital">
-              Seu navegador não suporta vídeo HTML5.
-            </video>
-          ) : (
-            <div class="h1-doc__placeholder h1-doc__placeholder--video" role="status">
-              ▶ TRECHO 3 EM PREPARAÇÃO
-            </div>
-          )}
+          <h2 class="h1-doc__bar">▣ Relacionamentos</h2>
+          <video controls preload="metadata" playsinline src={midias.trecho3} aria-label="Fato Capital — Relacionamentos">
+            Seu navegador não suporta vídeo HTML5.
+          </video>
         </div>
       </section>
 
