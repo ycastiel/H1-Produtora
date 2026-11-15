@@ -1,57 +1,88 @@
+/* Créditos oficiais: composição própria da seção Apoio. */
 .h1-about__support {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
+    display: grid;
+    gap: 1.2rem;
 }
 
-.h1-about__support>div:first-child {
-    flex: 1 1 210px;
-}
-
-.h1-about__support .h1-about__eyebrow {
+.h1-about__support-heading .h1-about__eyebrow {
     margin: 0 0 .2rem;
 }
 
-.h1-about__support h2 {
+.h1-about__support-heading h2 {
     margin: 0;
 }
 
-.h1-about__support-credit {
-    display: flex;
-    align-items: center;
-    gap: .65rem;
-    min-width: min(100%, 240px);
-    padding: .8rem 1rem;
-    border: 1px solid #c7b1e1;
-    border-radius: 7px;
-    background: linear-gradient(130deg, #fffeff, #eee6fb);
-    color: #453062;
-    box-shadow: inset 0 1px white, 0 3px 10px #3d2b5822;
-}
-
-.h1-about__support-credit>span {
+.h1-about__support-grid {
     display: grid;
-    place-items: center;
-    width: 36px;
-    height: 36px;
-    flex: 0 0 36px;
-    border: 1px solid #c9a6eb;
-    border-radius: 4px;
-    color: #66358e;
-    background: linear-gradient(#fff, #e5d0ff);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: .85rem;
 }
 
-.h1-about__support-credit strong {
-    display: block;
-    font-size: .93rem;
-    line-height: 1.3;
+.h1-about__support-credit {
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid #c7b1e1;
+    border-left: 3px solid #9d7acb;
+    border-radius: 7px;
+    background: linear-gradient(145deg, #fffeff, #f0eaf9);
+    color: #453062;
+    box-shadow: inset 0 1px #fff, 0 3px 10px #3d2b581a;
 }
 
-.h1-about__support-credit small {
-    display: block;
-    margin-top: .15rem;
-    color: #886d9b;
-    font: 700 .59rem var(--font-mono);
+.h1-about__support-credit h3 {
+    margin: 0 0 .7rem;
+    color: #57317c;
+    font-size: .87rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.h1-about__support-credit ul {
+    display: grid;
+    gap: .45rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.h1-about__support-credit li {
+    position: relative;
+    padding-left: .9rem;
+    color: #655574;
+    font-size: .8rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.h1-about__support-credit li::before {
+    content: '✧';
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #9b6ac5;
+}
+
+.h1-about__support .h1-about__support-notice {
+    margin: .2rem 0 0;
+    padding: .9rem 1rem;
+    border: 1px solid #d0c0df;
+    border-left: 3px solid #8b68b8;
+    border-radius: 5px;
+    color: #564768;
+    background: #f6f1fb;
+    font-size: .77rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 980px) {
+    .h1-about__support-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .h1-about__support-grid {
+        grid-template-columns: 1fr;
+    }
 }
