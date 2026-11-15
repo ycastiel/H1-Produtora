@@ -50,15 +50,8 @@ const episodios: Episodio[] = [
   },
 ];
 
-// O roteiro ainda não define qual mídia de trote será usada no EP4.
-// Quando o cliente enviar o arquivo, coloque-o em recursos/publico/ e configure abaixo.
-// Exemplos: arquivo: '/videos/extras/ep4-trote.mp4', tipo: 'video'
-//           arquivo: '/videos/extras/ep4-trote.mp3', tipo: 'audio'
-const troteExtraEP4: { arquivo: string; tipo: 'video' | 'audio' } = {
-  arquivo: '',
-  tipo: 'video',
-};
-const possuiTroteExtra = troteExtraEP4.arquivo.trim().length > 0;
+// Easter egg do EP4: áudio oficial já disponível na pasta pública.
+const audioExtraEP4 = '/videos/audios/alienados/demonstracoes-praticas.mp3';
 ---
 <Layout title="H1Produtora | Alienados" description="Alienados, o podcast da H1 Produtora.">
   <main class="h1-alienados">
@@ -122,7 +115,6 @@ const possuiTroteExtra = troteExtraEP4.arquivo.trim().length > 0;
                     data-alienados-extra-open
                     aria-haspopup="dialog"
                     aria-controls="alienados-extra-ep4"
-                    title="Ver demonstração prática extra"
                   ><em>demonstrações práticas</em></button>
                   {ep.descricao.split('demonstrações práticas')[1]}
                 </>
@@ -142,24 +134,19 @@ const possuiTroteExtra = troteExtraEP4.arquivo.trim().length > 0;
     >
       <header class="h1-alienados__extra-header">
         <span aria-hidden="true">●</span>
-        <h2 id="alienados-extra-title">H1 / ARQUIVO EXTRA — EP. 04</h2>
+        <h2 id="alienados-extra-title">H1 / ARQUIVO COMPLEMENTAR — EP. 04</h2>
         <button type="button" class="h1-alienados__extra-close" data-alienados-extra-close aria-label="Fechar janela">×</button>
       </header>
       <div class="h1-alienados__extra-body">
-        <p id="alienados-extra-description" class="h1-alienados__extra-caption">Demonstrações práticas — material complementar do Alienados.</p>
-        {possuiTroteExtra ? (
-          troteExtraEP4.tipo === 'video' ? (
-            <video controls preload="none" playsinline src={troteExtraEP4.arquivo} aria-label="Reproduzir trote extra do episódio 4">Seu navegador não suporta vídeo.</video>
-          ) : (
-            <audio controls preload="none" src={troteExtraEP4.arquivo} aria-label="Reproduzir trote extra do episódio 4">Seu navegador não suporta áudio.</audio>
-          )
-        ) : (
-          <div class="h1-alienados__extra-pendente" role="status">
-            <span aria-hidden="true">▣</span>
-            <p>MÍDIA EM PREPARAÇÃO</p>
-            <small>O trote adicional ainda será escolhido pela equipe da H1.</small>
-          </div>
-        )}
+        <p id="alienados-extra-description" class="h1-alienados__extra-caption">Demonstrações práticas — material extra de 'Alienados'.</p>
+        <audio
+          controls
+          preload="none"
+          src={audioExtraEP4}
+          aria-label="Reproduzir áudio extra do episódio 4"
+        >
+          Seu navegador não suporta áudio.
+        </audio>
       </div>
     </dialog>
   </main>
