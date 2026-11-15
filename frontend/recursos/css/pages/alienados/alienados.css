@@ -55,6 +55,28 @@
     cursor: default;
 }
 
+/* Mesmo hover da Home, preservando o gradiente original de Alienados. */
+.h1-alienados__nav a {
+    box-shadow: inset 0 2px 2px #ffffffbc, 0 3px 0 #4c2879, 0 5px 9px #25143851;
+    transition: filter 170ms ease, translate 170ms ease, box-shadow 170ms ease;
+}
+
+.h1-alienados__nav a:hover {
+    filter: brightness(1.09);
+    translate: 0 -2px;
+    box-shadow: inset 0 2px 2px #fff, 0 4px 0 #51317e, 0 7px 11px #27194570;
+}
+
+.h1-alienados__nav a:focus-visible {
+    outline: 3px solid #683e84;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .h1-alienados__nav a { transition: none; }
+    .h1-alienados__nav a:hover { translate: none; }
+}
+
 .h1-alienados__hero {
     position: relative;
     overflow: hidden;
