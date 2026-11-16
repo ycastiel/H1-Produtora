@@ -1,8 +1,45 @@
 {
   "name": "h1-produtora",
   "compatibility_date": "2026-10-20",
-  "assets": {
-    "directory": "../start/dist"
+  "main": "./Worker.ts",
+  "secrets": {
+    "required": [
+      "H1_LOGIN_CREDENTIALS",
+      "H1_SESSION_KEY"
+    ]
   },
-  "previews": {}
+
+"ratelimits": [
+  {
+    "name": "H1_LOGIN_LIMITER",
+    "namespace_id": "2026111601",
+    "simple": {
+      "limit": 8,
+      "period": 60
+    }
+  }
+],
+
+  "assets": {
+    "directory": "../start/dist",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*",
+      "/login*"
+    ]
+  },
+  
+"previews": {
+  "ratelimits": [
+    {
+      "name": "H1_LOGIN_LIMITER",
+      "namespace_id": "2026111602",
+      "simple": {
+        "limit": 8,
+        "period": 60
+      }
+    }
+  ]
+}
+
 }
