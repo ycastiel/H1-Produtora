@@ -28,5 +28,18 @@
       "/login*"
     ]
   },
-  "previews": {}
+  
+"previews": {
+  "ratelimits": [
+    {
+      "name": "H1_LOGIN_LIMITER",
+      "namespace_id": "2026111602",
+      "simple": {
+        "limit": 8,
+        "period": 60
+      }
+    }
+  ]
+}
+
 }
