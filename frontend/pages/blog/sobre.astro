@@ -28,6 +28,44 @@ const equipe = [
     autoria: 'Leonardo Fábio, em declaração durante episódio de Alienados',
   },
 ] as const;
+
+const creditosApoio = [
+  {
+    area: 'Staff Estúdio Underdog',
+    participantes: [
+      'Logan Florentino',
+      'Guilherme Minetto',
+      'Bianca Viana',
+      'Gabriele Viana',
+      'Aline Marcolino',
+    ],
+  },
+  { area: 'Assistência de Roteiro', participantes: ['Pedro Henrique Santos'] },
+  { area: 'Roteirista e Assistência de Produção', participantes: ['TheMomma'] },
+  { area: 'Assistência de Câmera', participantes: ['Emília Rabelo Alves'] },
+  { area: 'Assistência de Edição', participantes: ['David Suok'] },
+  { area: 'Apresentador Fato Capital', participantes: ['Matheus Delat'] },
+  {
+    area: 'Figuração',
+    participantes: [
+      'João Pedro Castor Werneck',
+      'Diego Campos de Carvalho Melo',
+      'Lilian Cristina Martins',
+    ],
+  },
+  { area: 'Desenvolvedor Website', participantes: ['José Alexandre de Farias Neto'] },
+  { area: 'Time de QA', participantes: ['Enzo Gazoni', 'Felipe Moreno'] },
+  { area: 'Assessor de Marketing Digital', participantes: ['Matheus Lupinus'] },
+] as const;
+
+// Identidade visual discreta para os badges dos participantes.
+const iniciaisApoio = (nome: string): string => {
+  const partes = nome.trim().split(/\s+/);
+  const iniciais = partes.length === 1
+    ? partes[0].slice(0, 2)
+    : `${partes[0][0]}${partes[partes.length - 1][0]}`;
+  return iniciais.toLocaleUpperCase('pt-BR');
+};
 ---
 <Layout title="H1 - Produtora | Sobre a H1" description="Conheça a história e a equipe da H1 Produtora.">
   <main class="h1-about" id="topo">
@@ -76,9 +114,16 @@ const equipe = [
               <p>Nós da H1 temos o prazer de nos inserir no excitante mercado do audiovisual brasileiro. Apesar de novos, somos um grupo de indivíduos dedicados ao aprimoramento e compreensão da arte de forma humana e legal.</p>
               <p>Nosso princípio é de buscar a arte autêntica, acreditamos que o toque humano é em sua essência extremamente importante e relevante para cada história contada. Com isso também somos extremamente gratos aos nossos colaboradores e funcionários, somos todos uma família e sem eles não seriamos nada.</p>
             </div>
-            <figure class="h1-about__set-placeholder">
-              <div aria-hidden="true">🎬</div>
-              <figcaption>Imagem de bastidores em preparação</figcaption>
+            <figure class="h1-about__set-photo">
+              <img
+                src="/imagens/sobreh1/bastidores.webp"
+                alt="Registro dos bastidores da produção, com a equipe filmando uma cena externa de Fato Capital"
+                width="1624"
+                height="960"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>✧ Bastidores da H1 Produtora</figcaption>
             </figure>
           </div>
         </section>
@@ -111,14 +156,39 @@ const equipe = [
         <section class="h1-about__window" id="apoio" aria-labelledby="h1-apoio-title">
           <div class="h1-about__window-head"><span>✦ &nbsp; Apoio</span><span>CRÉDITOS</span></div>
           <div class="h1-about__window-body h1-about__support">
-            <div>
+            <div class="h1-about__support-heading">
               <p class="h1-about__eyebrow">COLABORAÇÕES / APOIO</p>
               <h2 id="h1-apoio-title">Apoio</h2>
             </div>
-            <div class="h1-about__support-credit">
-              <span aria-hidden="true">✦</span>
-              <div><strong>Matheus Lupinus</strong><small>APOIO</small></div>
+
+            <div class="h1-about__support-grid">
+              {creditosApoio.map((credito) => (
+                <section class:list={['h1-about__support-credit', { 'h1-about__support-credit--wide': credito.participantes.length >= 3 }]}>
+                  <h3 class="h1-about__support-role">
+                    <span class="h1-about__support-role-symbol" aria-hidden="true">✦</span>
+                    {credito.area}
+                  </h3>
+                  <ul class="h1-about__support-badges" aria-label={`Participantes de ${credito.area}`}>
+                    {credito.participantes.map((nome) => (
+                      <li class:list={[
+                        'h1-about__support-badge',
+                        {
+                          'h1-about__support-badge--aline': nome === 'Aline Marcolino',
+                          'h1-about__support-badge--alexandre': nome === 'José Alexandre de Farias Neto',
+                        },
+                      ]}>
+                        <span class="h1-about__support-avatar" aria-hidden="true">{iniciaisApoio(nome)}</span>
+                        <strong>{nome}</strong>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
             </div>
+
+            <p class="h1-about__support-notice">
+              Não é permitido o uso desse trabalho ou de suas mídias derivadas para o treinamento de IAs generativas.
+            </p>
           </div>
         </section>
       </div>

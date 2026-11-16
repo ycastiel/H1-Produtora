@@ -5,11 +5,25 @@ import '../../../recursos/css/pages/login/fundo-alien.css';
 
 interface Props {
   personagem: 'Benê' | 'Leonardo' | 'Wolftheus' | 'Jeff';
-  /** URL do vídeo oficial (ou null enquanto estiver pendente). */
   video?: string | null;
 }
 
 const { personagem, video = null } = Astro.props;
+
+// Somente marcado como disponível um arquivo já enviado ao R2.
+const arquivosPorPersonagem: Record<Props['personagem'], { arquivo: string; disponivel: boolean }> = {
+  'Benê': { arquivo: 'Bene.mp4', disponivel: true },
+  'Leonardo': { arquivo: 'Berinjela.mp4', disponivel: true },
+  'Wolftheus': { arquivo: 'Wolftheus.mp4', disponivel: true },
+  'Jeff': { arquivo: 'Jeff.mp4', disponivel: true },
+};
+
+const midia = arquivosPorPersonagem[personagem];
+const videoDoPersonagem = video ?? (
+  midia.disponivel
+    ? `https://midia.h1produtora.com.br/videos/login/${encodeURIComponent(midia.arquivo)}`
+    : null
+);
 ---
 
 <main
@@ -29,13 +43,13 @@ const { personagem, video = null } = Astro.props;
     aria-label={`Vídeo de ${personagem}`}
   >
     <div class="alien-video__media" data-alien-video-media>
-      {video ? (
+      {videoDoPersonagem ? (
         <video
           class="alien-video__player"
           controls
           preload="metadata"
           playsinline
-          src={video}
+          src={videoDoPersonagem}
           aria-label={`Gravação de ${personagem}`}
         >
           Seu navegador não suporta vídeo HTML5.
@@ -67,12 +81,6 @@ const { personagem, video = null } = Astro.props;
 </main>
 
 <script>
-  /**
-   * Compartilhado por todas as páginas de personagens.
-   * Inicial: moldura discreta à esquerda para não esconder o núcleo da arte.
-   * Seleção do painel / reprodução: vídeo ganha destaque e vai para o centro.
-   * Recolher/Escape: devolve o espaço central à ilustração.
-   */
   function iniciarVideosAlien(): void {
     document.querySelectorAll<HTMLElement>('.alien-video--interativo').forEach((painel) => {
       if (painel.dataset.videoInicializado === 'true') return;

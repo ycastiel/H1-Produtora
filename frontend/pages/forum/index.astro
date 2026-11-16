@@ -2,11 +2,10 @@
 import Layout from '../../views/layouts/Layout.astro';
 import MessengerBuddy from '../../views/componentes/utils/MessengerBuddy.astro';
 import FakeNews from '../../views/componentes/home/FakeNews.astro';
+import AnuncioNexa from '../../views/componentes/utils/AnuncioNexa.astro';
 import '../../recursos/css/pages/forum/forum.css';
 import '../../recursos/css/pages/home/noticias.css';
 
-// Textos fornecidos no roteiro oficial da H1. Não alterar falas sem aprovação.
-// Arquivo de discussões estático: os visitantes não publicam novas mensagens.
 const topicos = [
   {
     "id": "boas-vindas",
@@ -204,7 +203,7 @@ const topicos = [
       },
       {
         "autor": "Benê",
-        "texto": "Técnicamente é uma fruta `o´/"
+        "texto": "Técnicamente é uma fruta \\\u0060o\u00B4/"
       }
     ]
   },
@@ -411,6 +410,7 @@ const avatarLetra = (nome: string) => nome.replace(/^zZ_/, '').charAt(0).toUpper
               <a href="/blog/sobre">✿ Conheça a H1</a>
             </div>
           </section>
+          <AnuncioNexa />
         </aside>
 
         <section class="h1-forum__main" aria-labelledby="forum-heading">

@@ -3,10 +3,16 @@
 import Layout from '../../views/layouts/Layout.astro';
 import MessengerBuddy from '../../views/componentes/utils/MessengerBuddy.astro';
 import FakeNews from '../../views/componentes/home/FakeNews.astro';
+import AnuncioNexa from '../../views/componentes/utils/AnuncioNexa.astro';
 import '../../recursos/css/pages/home/home.css';
 import '../../recursos/css/pages/home/noticias.css';
 import '../../recursos/css/pages/home/acesso-documentario.css';
 import '../../recursos/css/pages/home/menu-dourado.css';
+
+const imagensHome = {
+  fatoCapital: '/imagens/documentario/fato-capital.webp',
+  alienados: '/imagens/home/alienados.webp',
+};
 ---
 
 <Layout title="H1 - Produtora | Início" description="Conheça a H1 - Produtora, suas produções e sua equipe." >
@@ -74,13 +80,14 @@ import '../../recursos/css/pages/home/menu-dourado.css';
           <section class="fb-widget">
             <h2 class="fb-widget__bar">✧ NAVEGAÇÃO RÁPIDA</h2>
             <div class="fb-shortcuts">
-              <a href="#inicio">⌂ &nbsp; Página inicial</a>
               <a href="/blog/sobre">✧ &nbsp; Conheça a H1</a>
               <a href="#producoes">▧ &nbsp; Nossas produções</a>
               <a href="/forum">✉ &nbsp; Fórum da comunidade</a>
               <a href="/alienados">◉ &nbsp; Podcast Alienados</a>
             </div>
           </section>
+
+          <AnuncioNexa />
         </aside>
 
         <div class="fb-main-column">
@@ -114,8 +121,18 @@ import '../../recursos/css/pages/home/menu-dourado.css';
                 </div>
                 <span>CATÁLOGO / PRÉVIA</span>
               </div>
+
               <a class="fb-post fb-post--link" href="/documentario">
-                <div class="fb-post__art fb-post__art--space" aria-hidden="true"><span>✦</span></div>
+                <div class="fb-post__art fb-post__art--cover" aria-hidden="true">
+                  <img
+                    class="fb-post__image"
+                    src={imagensHome.fatoCapital}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
                 <div class="fb-post__body">
                   <p class="fb-post__meta">DOCUMENTÁRIO</p>
                   <h3>Fato Capital</h3>
@@ -124,8 +141,18 @@ import '../../recursos/css/pages/home/menu-dourado.css';
                   <span class="fb-post__pending">[ NOVOS MATERIAIS EM PREPARAÇÃO ]</span>
                 </div>
               </a>
+
               <a class="fb-post fb-post--muted fb-post--link" href="/alienados">
-                <div class="fb-post__art fb-post__art--disc" aria-hidden="true"><span>◈</span></div>
+                <div class="fb-post__art fb-post__art--cover" aria-hidden="true">
+                  <img
+                    class="fb-post__image"
+                    src={imagensHome.alienados}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
                 <div class="fb-post__body">
                   <p class="fb-post__meta">PODCAST</p>
                   <h3>Alienados</h3>
@@ -150,27 +177,74 @@ import '../../recursos/css/pages/home/menu-dourado.css';
         <aside class="fb-sidebar fb-sidebar--right" aria-label="Anúncios da produtora">
           <section class="fb-widget">
             <h2 class="fb-widget__bar">✦ ANÚNCIOS</h2>
-            <div class="fb-advert" data-random-ad role="region" aria-roledescription="carrossel" aria-label="Anúncios das produções H1" tabindex="0">
+
+            <div
+              class="fb-advert"
+              data-random-ad
+              role="region"
+              aria-roledescription="carrossel"
+              aria-label="Anúncios das produções H1"
+              tabindex="0"
+            >
               <div class="fb-advert__viewport" aria-live="off">
-                <a class="fb-advert__card" href="/alienados" data-ad="alienados" aria-label="Conhecer o podcast Alienados">
-                  <span class="fb-advert__overline">PRODUÇÃO H1</span>
-                  <strong>ALIENADOS</strong>
-                  <span class="fb-advert__subtitle">Nosso podcast</span>
+                <a
+                  class="fb-advert__card fb-advert__card--media"
+                  href="/alienados"
+                  data-ad="alienados"
+                  aria-label="Conhecer o podcast Alienados"
+                >
+                  <div class="fb-advert__media" aria-hidden="true">
+                    <img
+                      class="fb-advert__image"
+                      src={imagensHome.alienados}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+
+                  <div class="fb-advert__content">
+                    <span class="fb-advert__overline">PRODUÇÃO H1</span>
+                    <strong>ALIENADOS</strong>
+                    <span class="fb-advert__subtitle">Nosso podcast</span>
+                  </div>
                 </a>
-                <a class="fb-advert__card fb-advert__card--documentary" href="/documentario" data-ad="documentario" hidden aria-label="Conhecer Fato Capital, documentário da H1">
-                  <span class="fb-advert__overline">PRODUÇÃO H1</span>
-                  <strong>FATO CAPITAL</strong>
-                  <span class="fb-advert__subtitle">Conhecer documentário</span>
+
+                <a
+                  class="fb-advert__card fb-advert__card--documentary fb-advert__card--media"
+                  href="/documentario"
+                  data-ad="documentario"
+                  hidden
+                  aria-label="Conhecer Fato Capital, documentário da H1"
+                >
+                  <div class="fb-advert__media" aria-hidden="true">
+                    <img
+                      class="fb-advert__image"
+                      src={imagensHome.fatoCapital}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+
+                  <div class="fb-advert__content">
+                    <span class="fb-advert__overline">PRODUÇÃO H1</span>
+                    <strong>FATO CAPITAL</strong>
+                    <span class="fb-advert__subtitle">Conhecer documentário</span>
+                  </div>
                 </a>
               </div>
+
               <div class="fb-advert__controls" data-ad-controls hidden>
                 <button type="button" class="fb-advert__control" data-ad-prev aria-label="Anúncio anterior">‹</button>
                 <span class="fb-advert__count" data-ad-count aria-live="polite" aria-atomic="true">1 / 2</span>
                 <button type="button" class="fb-advert__control" data-ad-next aria-label="Próximo anúncio">›</button>
               </div>
+
               <p class="fb-advert__footnote">Espaço reservado aos banners oficiais das produções.</p>
             </div>
           </section>
+
           <section class="fb-widget">
             <h2 class="fb-widget__bar">✧ NAVEGAÇÃO</h2>
             <div class="fb-shortcuts">
@@ -179,6 +253,7 @@ import '../../recursos/css/pages/home/menu-dourado.css';
               <a href="/forum">Fórum</a>
             </div>
           </section>
+
           <FakeNews contexto="home" />
         </aside>
       </div>
