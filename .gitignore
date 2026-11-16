@@ -17,6 +17,13 @@ pnpm-debug.log*
 .env*
 !.env.example
 
+# Cloudflare Workers - Local secrets
+**/.dev.vars*
+**/.env.local*
+
+# Cloudflare Wrangler - Local state
+.wrangler/
+
 # TypeScript cache
 *.tsbuildinfo
 
